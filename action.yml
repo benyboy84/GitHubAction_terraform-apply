@@ -1,0 +1,21 @@
+name: 'Terrafrm Apply'
+description: 'This action uses the `terraform apply` to apply a terraform plan. If the plan is not found, then the apply action will fail. This is to ensure that the action only applies changes that have been reviewed by a human. If the triggering event relates to a PR, it will add a comment on the PR containing the changes.'
+author: 'Benoit Blais'
+
+inputs:
+  GitHub_Token:
+    description: 'GitHub Token use to authenticate on behalf of GitHub Actions.'
+    required: true
+  Plan:
+    description: 'Plan generated from another GitHub Action from which `terraform apply` will execute the planned changes.'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - id: BashScript
+      shell: bash
+      run: bash ${{ github.action_path }}/main.sh
+      env:
+        INPUT_GITHUB_TOKEN: ${{ inputs.GitHub_Token }}
+        INPUT_PLAN: ${{ inputs.Plan }}
