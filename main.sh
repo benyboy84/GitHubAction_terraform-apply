@@ -30,9 +30,11 @@ if [[ $ExitCode -eq 0 ]]; then
     Pr_Comment="### ${GITHUB_WORKFLOW} - Terraform apply Succeeded
 <details><summary>Show Output</summary>
 <p>
+
 \`\`\`diff
 $Output
 \`\`\`
+
 </p>
 </details>"
 fi
