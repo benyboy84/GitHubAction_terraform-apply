@@ -13,9 +13,6 @@ if [[ -n "$INPUT_PLAN" ]]; then
     fi
 fi
 
-echo "Terraform Apply Output"
-echo -e "$Output"
-
 # Exit Code: 0
 # Meaning: 0 = Terraform apply applied
 # Actions: Strip out the refresh section, ignore everything after the 72 dashes, format, colourise and build PR comment.
