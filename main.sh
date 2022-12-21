@@ -59,9 +59,9 @@ else
     Content_Header="Content-Type: application/json"
 
     if [[ "$GITHUB_EVENT_NAME" == "issue_comment" ]]; then
-        PR_COMMENTS_URL=$(jq -r ".issue.comments_url" "$GITHUB_EVENT_PATH")
+        Pr_Comments_Url=$(jq -r ".issue.comments_url" "$GITHUB_EVENT_PATH")
     else
-        PR_COMMENTS_URL=$(jq -r ".pull_request.comments_url" "$GITHUB_EVENT_PATH")
+        Pr_Comments_Url=$(jq -r ".pull_request.comments_url" "$GITHUB_EVENT_PATH")
     fi
     Pr_Comment_Uri=$(jq -r ".repository.issue_comment_url" "$GITHUB_EVENT_PATH" | sed "s|{/number}||g")
 
